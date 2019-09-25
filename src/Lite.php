@@ -9,8 +9,7 @@ public function __construct($debug = false) {
     }
 
     protected function init($debug) {
-        DI()->loader->addDirs('./Library/User/User');
-        Translator::addMessage(API_ROOT . '/vendor/phalapi/user/src');
+        Translator::addMessage(API_ROOT . '/vendor/athmoon/user/src');
     }
 
     /**
@@ -82,8 +81,8 @@ public function __construct($debug = false) {
      * - 当有效期为当前时间时，即退出
      */
     protected function _renewalTo($newExpiresTime) {
-        $userId = DI()->request->get('user_id');
-        $token = DI()->request->get('token');
+        $userId = \Phalapi\DI()->request->get('user_id');
+        $token = \Phalapi\DI()->request->get('token');
 
         if (empty($userId) || empty($token)) {
             return;

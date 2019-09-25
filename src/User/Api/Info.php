@@ -8,7 +8,7 @@ use Phalapi\User\User\Domain\Info as Domain_User_Info;
  * User扩展－用户信息服务
  */
 
-class Info extends PhalApi_Api {
+class Info extends Api {
 
     public function getRules()
     {
@@ -25,7 +25,7 @@ class Info extends PhalApi_Api {
     public function getUserInfo() {
         $rs = array('code' => 0, 'info' => array(), 'msg' => '');
 
-        DI()->userLite->check(true);
+        \PhalApi\DI()->userLite->check(true);
 
         $domain = new Domain_User_Info();
         $info = $domain->getUserInfo($this->otherUserId);
@@ -34,7 +34,7 @@ class Info extends PhalApi_Api {
             $rs['code'] = 1;
             $rs['msg'] = T('can not get user info');
 
-            DI()->logger->debug('can not get user info', $this->otherUserId);
+            \PhalApi\DI()->logger->debug('can not get user info', $this->otherUserId);
 
             return $rs;
         }

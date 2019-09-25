@@ -55,14 +55,14 @@ class Login extends Api {
             $userId = Domain_User_Generator::createUserForWeixin($this->openId, $this->nickname, $this->avatar);
             if ($userId <= 0) {
                 //异常1：用户创建失败
-                DI()->logger->error('failed to create weixin user', array('openId' => $this->openId));
+                \PhalApi\DI()->logger->error('failed to create weixin user', array('openId' => $this->openId));
                 throw new PhalApi_Exception_InternalServerError(T('failed to create weixin user'));
             }
 
             $id = $domain->bindUser($userId, $this->openId, $this->token, $this->expiresIn);
             if ($id <= 0) {
                 //异常2：绑定微信失败
-                DI()->logger->error('failed to bind user with weixin', 
+                \PhalApi\DI()->logger->error('failed to bind user with weixin', 
                     array('userid' => $userId, 'openId' => $this->openId));
                 throw new PhalApi_Exception_InternalServerError(T('failed to bind user with weixin'));
             }
@@ -72,7 +72,7 @@ class Login extends Api {
 
         if ($userId <= 0) {
             //异常3：微信用户不存在
-            DI()->logger->error('weixin user not found', 
+            \PhalApi\DI()->logger->error('weixin user not found', 
                 array('userid' => $userId, 'openId' => $this->openId));
             throw new PhalApi_Exception_InternalServerError(T('weixin user not found'));
         }
@@ -85,5 +85,4 @@ class Login extends Api {
 
         return $rs;
     }
-
 }

@@ -19,12 +19,12 @@ public function __construct($debug = false) {
      * @throws PhalApi_Exception_BadRequest
      */
     public function check($isExitIfNotLogin = false) {
-        $userId = DI()->request->get('user_id');
-        $token = DI()->request->get('token');
+        $userId = \Phalapi\DI()->request->get('user_id');
+        $token = \Phalapi\DI()->request->get('token');
 
         //是否缺少必要参数
         if (empty($userId) || empty($token)) {
-            DI()->logger->debug('user not login', array('userId' => $userId, 'token' => $token));
+            \Phalapi\DI()->logger->debug('user not login', array('userId' => $userId, 'token' => $token));
 
             if ($isExitIfNotLogin) {
                 throw new PhalApi_Exception_BadRequest(T('user not login'), 1);
@@ -37,7 +37,7 @@ public function __construct($debug = false) {
 
         //是否已过期
         if ($expiresTime <= $_SERVER['REQUEST_TIME']) {
-            DI()->logger->debug('user need to login again', 
+            \Phalapi\DI()->logger->debug('user need to login again', 
                 array('expiresTime' => $expiresTime, 'userId' => $userId, 'token' => $token));
 
             if ($isExitIfNotLogin) {
@@ -91,5 +91,4 @@ public function __construct($debug = false) {
         $model = new Model_User_UserSession();
         $model->updateExpiresTime($userId, $token, $newExpiresTime);
     }
-}
 }

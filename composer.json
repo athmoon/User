@@ -1,0 +1,24 @@
+{
+  "name": "athmoon/user",
+  "description": "PhalApi 2.x 用户",
+  "keywords": [
+    "athmoon",
+    "phalapi 2.x"
+  ],
+  "license": "GPL-3.0+",
+  "authors": [
+    {
+      "name": "athmoon",
+      "email": "athmoon@126.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "PhalApi\\User\\": "src"
+    }
+  }
+}

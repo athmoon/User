@@ -1,6 +1,8 @@
 <?php
 namespace PhalApi\User;
 use PhalApi\Translator;
+use Phalapi\User\User\Model\UserSession as Model_User_UserSession;
+
 
 class Lite {
 
@@ -19,6 +21,7 @@ public function __construct($debug = false) {
      * @throws PhalApi_Exception_BadRequest
      */
     public function check($isExitIfNotLogin = false) {
+        //return true;
         $userId = \Phalapi\DI()->request->get('user_id');
         $token = \Phalapi\DI()->request->get('token');
 

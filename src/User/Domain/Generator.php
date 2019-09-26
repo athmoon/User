@@ -50,7 +50,7 @@ class Generator {
         $newUserInfo['nickname'] = $nickname;
         $newUserInfo['avatar'] = !empty($avatar) ? $avatar : '';
 
-        $newUserInfo['salt'] = PhalApi_Tool::createRandStr(32);
+        $newUserInfo['salt'] = \PhalApi\Tool::createRandStr(32);
         $newUserInfo['password'] = '******';
         $newUserInfo['reg_time'] = $_SERVER['REQUEST_TIME'];
 

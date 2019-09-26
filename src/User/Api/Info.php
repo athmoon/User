@@ -32,7 +32,7 @@ class Info extends Api {
 
         if (empty($info)) {
             $rs['code'] = 1;
-            $rs['msg'] = T('can not get user info');
+            $rs['msg'] = \Phalapi\T('can not get user info');
 
             \PhalApi\DI()->logger->debug('can not get user info', $this->otherUserId);
 

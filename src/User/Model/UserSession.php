@@ -24,7 +24,7 @@ class UserSession extends NotORM {
     public function getExpiresTime($userId, $token) {
         $mcKey = $this->getExpiresTimeMcKey($userId, $token);
         $expiresTime = NULL;
-        $cache = DI()->cache;
+        $cache = \Phalapi\DI()->cache;
 
         if (isset($cache)) {
             $expiresTime = $cache->get($mcKey);

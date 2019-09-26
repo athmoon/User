@@ -77,7 +77,7 @@ class Login extends Api {
             throw new PhalApi_Exception_InternalServerError(T('weixin user not found'));
         }
 
-        $token = Domain_User_User_Session::generate($userId);
+        $token = Domain_User_Session::generate($userId);
 
         $rs['info']['user_id'] = $userId;
         $rs['info']['token'] = $token;

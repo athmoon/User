@@ -27,7 +27,7 @@ public function __construct($debug = false) {
             \Phalapi\DI()->logger->debug('user not login', array('userId' => $userId, 'token' => $token));
 
             if ($isExitIfNotLogin) {
-                throw new PhalApi_Exception_BadRequest(T('user not login'), 1);
+                throw new \PhalApi\Exception\BadRequestException(\PhalApi\T('user not login'), 1);
             }
             return false;
         }
@@ -41,7 +41,7 @@ public function __construct($debug = false) {
                 array('expiresTime' => $expiresTime, 'userId' => $userId, 'token' => $token));
 
             if ($isExitIfNotLogin) {
-                throw new PhalApi_Exception_BadRequest(T('user need to login again'), 1);
+                throw new \PhalApi\Exception\BadRequestException(\PhalApi\T('user need to login again'), 1);
             }
             return false;
         }
